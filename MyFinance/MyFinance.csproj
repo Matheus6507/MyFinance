@@ -9,11 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MyFinance.Core\MyFinance.Core.csproj" />
+    <ProjectReference Include="..\MyFinance.ResponseModels\MyFinance.ResponseModels.csproj" />
   </ItemGroup>
 
 </Project>
