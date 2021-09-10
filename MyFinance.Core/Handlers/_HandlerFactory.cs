@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MyFinance.Core.Handlers
 {
-    public class _HandlerFactory : IDisposable
+    public class HandlerFactory : IDisposable
     {
         public static IWebHostEnvironment Environment;
         private IOptions<Config> _config;
@@ -47,9 +48,17 @@ namespace MyFinance.Core.Handlers
             _config = config;
         }
 
+        private UsuarioHandler _usuario;
+        public UsuarioHandler Usuario => _usuario ?? (_usuario = new UsuarioHandler(_context, _config, this));
+
         public void Detached(object entity)
         {
             _context.Entry(entity).State = EntityState.Detached;
+        }
+
+        public void Dispose()
+        {
+
         }
     }
 }

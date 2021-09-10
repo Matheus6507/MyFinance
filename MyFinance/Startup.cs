@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MyFinance.Core;
+using MyFinance.Core.Handlers;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -53,12 +56,17 @@ namespace MyFinance
                 }));
             });
 
-            services.AddDbContext<ApplicationDbContext>
+            services.AddDbContext<ApplicationDbContext>(options => options.UseQueryTrackingBehavior(QueryTrackingBehavior.TrackAll));
+            services.Configure<Config>(Configuration.GetSection("MyFinance"));
+            services.AddScoped<Config, Config>();
+            services.AddScoped<HandlerFactory, HandlerFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            HandlerFactory.Environment = env;
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
