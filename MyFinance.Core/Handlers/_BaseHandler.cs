@@ -27,9 +27,9 @@ namespace MyFinance.Core.Handlers
                 _config = new Config();
         }
 
-        public IEnumerable<TEntity> GetList()
+        public List<TEntity> GetList()
         {
-            return _entity.Take(1000);
+            return _entity.Take(1000).ToList();
         }
 
         public TEntity Criar(TEntity obj)

@@ -3,9 +3,8 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Data.Common;
 using System.IO;
-using MySql.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
 using MyFinance.Core.Models;
+using MySqlConnector;
 
 namespace MyFinance.Core
 {
@@ -26,6 +25,13 @@ namespace MyFinance.Core
             }
         }
 
+        public ApplicationDbContext(IOptions<Config> config)
+        {
+            _config = config;
+            if (_connectionString == null)
+                _connectionString = File.ReadAllText(Path.Combine(Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory.ToString()), "_conn.txt"));
+        }
+
         public ApplicationDbContext()
         {
             if (_connectionString == null)
@@ -33,6 +39,19 @@ namespace MyFinance.Core
         }
 
         internal virtual DbSet<Usuario> Usuarios { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseMySql(_connectionString, ServerVersion.AutoDetect(MySqlConnection));
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Usuario>(b =>
+            {
+                b.HasKey(x => x.Uid);
+            });
+        }
 
         internal void Detached(object entity)
         {

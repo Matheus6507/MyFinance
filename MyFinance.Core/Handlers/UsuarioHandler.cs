@@ -19,9 +19,9 @@ namespace MyFinance.Core.Handlers
         {
             _configuration = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<Usuario, UsuarioResponse>();
-                cfg.CreateMap<UsuarioResponse, Usuario>();
-                cfg.CreateMap<List<Usuario>, List<UsuarioResponse>>();
+                cfg.CreateMap<Usuario, UsuarioResponse>().ForMember(dest => dest.Chave, opt => opt.MapFrom(src => src.Uid));
+                cfg.CreateMap<UsuarioResponse, Usuario>().ForMember(dest => dest.Uid, opt => opt.MapFrom(src => src.Chave));
+                cfg.CreateMap<List<UsuarioResponse>, List<Usuario>>();
             });
 
             _mapper = _configuration.CreateMapper();
@@ -31,7 +31,7 @@ namespace MyFinance.Core.Handlers
         {
             try
             {
-                return _mapper.Map<List<UsuarioResponse>>(GetList());
+                return _mapper.Map(GetList(), new List<UsuarioResponse>());
             }
             catch (Exception ex)
             {

@@ -1,1 +1,1 @@
-﻿
+﻿Server=localhost;Database=myfinance;Uid=root;Pwd=root;
