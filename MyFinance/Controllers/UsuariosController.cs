@@ -47,7 +47,7 @@ namespace MyFinance.Controllers
                 {
                     Error = false,
                     Mensagem = Constantes.msgUsuarioCadastradoSucesso,
-                    Usuarios = new List<UsuarioBorder> { usuario }
+                    Usuarios = new List<UsuarioBorder> { user }
                 };
             }
             catch (Exception ex)
