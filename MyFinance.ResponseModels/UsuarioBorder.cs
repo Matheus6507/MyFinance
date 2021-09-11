@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace MyFinance.ResponseModels
 {
-    public class UsuarioResponse
+    public class UsuarioBorder
     {
         public Guid Chave { get; set; }
         public string Nome { get; set; }

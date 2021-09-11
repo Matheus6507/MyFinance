@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MyFinance.ResponseModels\MyFinance.ResponseModels.csproj" />
+    <ProjectReference Include="..\MyFinance.ResponseModels\MyFinance.BorderModels.csproj" />
+    <ProjectReference Include="..\MyFinance.Tools\MyFinance.Tools.csproj" />
   </ItemGroup>
 
   <ItemGroup>

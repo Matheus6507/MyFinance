@@ -27,6 +27,11 @@ namespace MyFinance.Core.Handlers
                 _config = new Config();
         }
 
+        public TEntity Get(Guid uid)
+        {
+            return _entity.Find(uid);
+        }
+
         public List<TEntity> GetList()
         {
             return _entity.Take(1000).ToList();

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFinance.Core", "MyFinance
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFinance.Tools", "MyFinance.Tools\MyFinance.Tools.csproj", "{F71F7844-83B1-4DA3-BB7F-0C740116397D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyFinance.ResponseModels", "MyFinance.ResponseModels\MyFinance.ResponseModels.csproj", "{1A7A349C-B907-4526-9BF7-E9D41E4F3FE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyFinance.BorderModels", "MyFinance.ResponseModels\MyFinance.BorderModels.csproj", "{1A7A349C-B907-4526-9BF7-E9D41E4F3FE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
