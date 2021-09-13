@@ -135,5 +135,24 @@ namespace MyFinance.Core.Handlers
                 throw new MyFinanceException(ex);
             }
         }
+
+        public string Autenticar(UsuarioBorder usuario)
+        {
+            try
+            {
+                var user = Get(usuario.Chave);
+
+                if (user != null)
+                {
+                    return TokenHandler.GenerateToken(user);
+                }
+                else
+                    return string.Empty;
+            }
+            catch (Exception ex)
+            {
+                throw new MyFinanceException(ex);
+            }
+        }
     }
 }

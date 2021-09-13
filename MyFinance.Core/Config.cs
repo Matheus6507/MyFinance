@@ -11,5 +11,6 @@ namespace MyFinance.Core
     {
         public string UserIP { get; set; }
         public Config Value { get { return this; } }
+        public string SecretKey { get; set; } = "chaveSecretaQueNinguemPodeSaber";
     }
 }

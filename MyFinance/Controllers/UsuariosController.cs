@@ -20,7 +20,7 @@ namespace MyFinance.Controllers
         { }
 
         [HttpGet]
-        public UsersResponse Get()
+        public UsersResponse GetAll()
         {
             try
             {
@@ -122,6 +122,26 @@ namespace MyFinance.Controllers
                         Mensagem = Constantes.msgUsuarioNaoEncontrado
                     };
                 }
+            }
+            catch (Exception ex)
+            {
+                return new UsersResponse { Error = true, Mensagem = new MyFinanceException(ex).Message };
+            }
+        }
+
+        [HttpPost]
+        [Route("Auth")]
+        public async Task<UsersResponse> Auth(UsuarioBorder usuario)
+        {
+            try
+            {
+                var token = _handlerFactory.Usuario.Autenticar(usuario);
+
+                return new UsersResponse
+                {
+                    Error = false,
+                    Mensagem = token
+                };
             }
             catch (Exception ex)
             {
