@@ -1,1 +1,1 @@
-﻿Server=localhost;Database=myfinance;Uid=root;Pwd=root;
+﻿Server=us-cdbr-east-06.cleardb.net;Database=heroku_ce5fc3984e31c3c;Uid=bc0db91d411c2c;Pwd=54daa18d;

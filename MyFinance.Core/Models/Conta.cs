@@ -10,7 +10,6 @@ namespace MyFinance.Core.Models
     {
         public Guid Uid { get; set; }
         public string Nome { get; set; }
-        public decimal Saldo { get; set; }
         public Guid UidUsuario { get; set; }
     }
 }
